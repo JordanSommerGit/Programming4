@@ -1,0 +1,22 @@
+﻿  MiniginPCH.cpp
+  ColliderComponent.cpp
+  Component.cpp
+  Font.cpp
+  GameObject.cpp
+  InputManager.cpp
+  PhysicsManager.cpp
+  RenderComponent.cpp
+  Renderer.cpp
+  ResourceManager.cpp
+  RigidbodyComponent.cpp
+  Scene.cpp
+  SceneManager.cpp
+  SceneObject.cpp
+  SpriteRenderComponent.cpp
+  TextObject.cpp
+  TextRenderComponent.cpp
+  Texture2D.cpp
+  Time.cpp
+  Transform.cpp
+SDL2main.lib(SDL_windows_main.obj) : error LNK2001: unresolved external symbol SDL_main
+D:\DAE\4_Programming\Minigin\x64\Release\Minigin.exe : fatal error LNK1120: 1 unresolved externals

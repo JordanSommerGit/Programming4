@@ -1,0 +1,24 @@
+﻿  Box.cpp
+  Character.cpp
+  Level1.cpp
+  Main.cpp
+  Minigin.cpp
+D:\DAE\4_Programming\Minigin\Minigin\time.h(14,8): error C3083: 'chrono': the symbol to the left of a '::' must be a type
+D:\DAE\4_Programming\Minigin\Minigin\time.h(14,16): error C2039: 'time_point': is not a member of 'std'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\include\ratio(21): message : see declaration of 'std'
+D:\DAE\4_Programming\Minigin\Minigin\time.h(14,26): error C2143: syntax error: missing ';' before '<'
+D:\DAE\4_Programming\Minigin\Minigin\time.h(14,26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\DAE\4_Programming\Minigin\Minigin\time.h(14,32): error C3083: 'chrono': the symbol to the left of a '::' must be a type
+D:\DAE\4_Programming\Minigin\Minigin\time.h(14,40): error C2039: 'steady_clock': is not a member of 'std'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\include\ratio(21): message : see declaration of 'std'
+D:\DAE\4_Programming\Minigin\Minigin\time.h(14,64): error C2238: unexpected token(s) preceding ';'
+D:\DAE\4_Programming\Minigin\Minigin\time.h(15,8): error C3083: 'chrono': the symbol to the left of a '::' must be a type
+D:\DAE\4_Programming\Minigin\Minigin\time.h(15,16): error C2039: 'time_point': is not a member of 'std'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\include\ratio(21): message : see declaration of 'std'
+D:\DAE\4_Programming\Minigin\Minigin\time.h(15,26): error C2143: syntax error: missing ';' before '<'
+D:\DAE\4_Programming\Minigin\Minigin\time.h(15,26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\DAE\4_Programming\Minigin\Minigin\time.h(15,32): error C3083: 'chrono': the symbol to the left of a '::' must be a type
+D:\DAE\4_Programming\Minigin\Minigin\time.h(15,40): error C2039: 'steady_clock': is not a member of 'std'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\include\ratio(21): message : see declaration of 'std'
+D:\DAE\4_Programming\Minigin\Minigin\time.h(15,64): error C2238: unexpected token(s) preceding ';'
+  Generating Code...
