@@ -39,12 +39,16 @@ void King::RigidbodyComponent::Update()
 	
 	glm::vec3 targetPosition = m_pTransform->GetPosition() + m_Velocity * Time::GetInstance().GetElapsed();
 
-	pGameObject->GetScene()->GetPhysicsManager()->CheckCollision(this, targetPosition, m_Velocity);
+	m_IsColliding = false;
+	m_IsColliding = pGameObject->GetScene()->GetPhysicsManager()->CheckCollision(this, targetPosition, m_Velocity);
 
 	targetPosition = m_pTransform->GetPosition() + m_Velocity * Time::GetInstance().GetElapsed();
 	m_pTransform->SetPosition(targetPosition);
 
-	m_Velocity /= m_Drag;
+	if (m_ApplyDrag)
+	{
+		m_Velocity /= m_Drag;
+	}
 }
 
 King::ColliderComponent* King::RigidbodyComponent::GetCollider()
@@ -72,9 +76,19 @@ void King::RigidbodyComponent::SetVelocity(glm::vec3 velocity)
 	m_Velocity = velocity;
 }
 
+bool King::RigidbodyComponent::IsColliding() const
+{
+	return m_IsColliding;
+}
+
 void King::RigidbodyComponent::SetApplyGravity(bool apply)
 {
 	m_ApplyGravity = apply;
+}
+
+void King::RigidbodyComponent::SetApplyDrag(bool apply)
+{
+	m_ApplyDrag = apply;
 }
 
 King::RigidbodyComponent::PhysicState King::RigidbodyComponent::GetState() const

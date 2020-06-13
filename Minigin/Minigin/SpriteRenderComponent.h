@@ -2,6 +2,8 @@
 #include "SceneObject.h"
 #include "Transform.h"
 #include "Component.h"
+#include <string>
+#include <memory>
 
 namespace King
 {
@@ -16,6 +18,7 @@ namespace King
 		void SetSprite(const std::string& filename, int width, int height, int rows, int columns, int frameCount, int startRow);
 
 		void SetStartRow(int row);
+		void SetStartColumn(int column);
 		void SetFrameCount(int count);
 		void SetFrameIncrease(int increase);
 		void SetAnimationTime(float time);
@@ -38,6 +41,7 @@ namespace King
 		int m_Columns;
 		int m_FrameCount;
 		int m_StartRow;
+		int m_StartColumn;
 		float m_CurrentAnimationTime;
 		float m_AnimationTime;
 		int m_FrameIndex;;

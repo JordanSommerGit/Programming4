@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Game">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
@@ -18,5 +14,120 @@
     <Filter Include="Game\Character">
       <UniqueIdentifier>{18e804ff-61ab-4c55-9774-5377716209b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Enemies">
+      <UniqueIdentifier>{a6688195-413d-4426-b29f-fae1e3a6c2fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Score">
+      <UniqueIdentifier>{9bef043f-6dfa-4a08-93a2-67b504b3f883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\PickUps">
+      <UniqueIdentifier>{08ed5bfe-fac5-4a95-88a0-ddbb5b36a1b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Helpers">
+      <UniqueIdentifier>{7dd362e6-e19a-4712-8849-42558f451ac7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Zenchan.cpp">
+      <Filter>Game\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Maita.cpp">
+      <Filter>Game\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Game\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>Game\Score</Filter>
+    </ClCompile>
+    <ClCompile Include="FrenchFries.cpp">
+      <Filter>Game\PickUps</Filter>
+    </ClCompile>
+    <ClCompile Include="Melon.cpp">
+      <Filter>Game\PickUps</Filter>
+    </ClCompile>
+    <ClCompile Include="PickUp.cpp">
+      <Filter>Game\PickUps</Filter>
+    </ClCompile>
+    <ClCompile Include="Level1.cpp">
+      <Filter>Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Game\Prefabs</Filter>
+    </ClCompile>
+    <ClCompile Include="Bounds.cpp">
+      <Filter>Game\Prefabs</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Level2.cpp">
+      <Filter>Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Level3.cpp">
+      <Filter>Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelLoader.cpp">
+      <Filter>Game\Helpers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Zenchan.h">
+      <Filter>Game\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Maita.h">
+      <Filter>Game\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Game\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>Game\Score</Filter>
+    </ClInclude>
+    <ClInclude Include="FrenchFries.h">
+      <Filter>Game\PickUps</Filter>
+    </ClInclude>
+    <ClInclude Include="Melon.h">
+      <Filter>Game\PickUps</Filter>
+    </ClInclude>
+    <ClInclude Include="PickUp.h">
+      <Filter>Game\PickUps</Filter>
+    </ClInclude>
+    <ClInclude Include="Level1.h">
+      <Filter>Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>Game\Prefabs</Filter>
+    </ClInclude>
+    <ClInclude Include="Bounds.h">
+      <Filter>Game\Prefabs</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Level2.h">
+      <Filter>Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Level3.h">
+      <Filter>Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelLoader.h">
+      <Filter>Game\Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,7 +6,6 @@
 #include "SceneManager.h"
 #include "Renderer.h"
 #include "ResourceManager.h"
-#include "Level1.h"
 #include "Time.h"
 
 void King::Minigin::Initialize()
@@ -20,8 +19,8 @@ void King::Minigin::Initialize()
 		"Programming 4 assignment",
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
-		640,
-		480,
+		512,
+		424,
 		SDL_WINDOW_OPENGL
 	);
 	if (m_Window == nullptr) 
@@ -37,8 +36,7 @@ void King::Minigin::Initialize()
  */
 void King::Minigin::LoadGame() const
 {
-	std::shared_ptr<Scene> pScene{ new Level1() };
-	SceneManager::GetInstance().AddScene(pScene);
+
 }
 
 void King::Minigin::Cleanup()

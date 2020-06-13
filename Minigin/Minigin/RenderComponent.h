@@ -2,6 +2,8 @@
 #include "SceneObject.h"
 #include "Transform.h"
 #include "Component.h"
+#include <string>
+#include <memory>
 
 namespace King
 {

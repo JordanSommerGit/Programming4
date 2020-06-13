@@ -19,7 +19,7 @@ void King::PhysicsManager::RemoveRigidbody(RigidbodyComponent* pRigidbody)
 
 bool King::PhysicsManager::CheckCollision(RigidbodyComponent* pToCheck, glm::vec3 targetPosition, glm::vec3& outputVelocity)
 {
-	bool canMove = false;
+	bool isColliding = false;
 	glm::vec3 oldVelocity = outputVelocity;
 	for (RigidbodyComponent* pRigidbody : m_pRigidbodies)
 	{
@@ -30,10 +30,13 @@ bool King::PhysicsManager::CheckCollision(RigidbodyComponent* pToCheck, glm::vec
 		std::vector<ColliderComponent*> pColliders = pRigidbody->GetColliders();
 		for (ColliderComponent* pCol : pColliders)
 		{
-			pCol->Collide(pToCheck, targetPosition, outputVelocity);
+			if (pCol->Collide(pToCheck, targetPosition, outputVelocity))
+			{
+				isColliding = true;
+			}
 		}
 	}
-	return canMove;
+	return isColliding;
 }
 
 void King::PhysicsManager::EnableDebugRendering(bool enable)

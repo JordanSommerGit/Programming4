@@ -21,6 +21,7 @@ King::SpriteRenderComponent::SpriteRenderComponent()
 	, m_FrameIndex( 0 )
 	, m_FrameCount( 0 )
 	, m_StartRow( 0 )
+	, m_StartColumn( 0 )
 	, m_FrameIncrease( 1 )
 {
 
@@ -49,7 +50,7 @@ void King::SpriteRenderComponent::Render() const
 
 		int srcWidth = m_TextWidth / m_Columns;
 		int srcHeight = m_TextHeight / m_Rows;
-		int srcX =  m_FrameIndex % m_Columns * srcWidth;
+		int srcX = (m_StartColumn + m_FrameIndex) % m_Columns * srcWidth;
 		int srcY = (m_StartRow + m_FrameIndex / m_Columns) * srcHeight;
 		Renderer::GetInstance().RenderTexture(*m_Sprite, pos.x, pos.y, (float)m_Width, (float)m_Height, (float)srcX, (float)srcY, (float)srcWidth, (float)srcHeight);
 	}
@@ -81,6 +82,11 @@ void King::SpriteRenderComponent::SetSprite(const std::string& filename, int wid
 void King::SpriteRenderComponent::SetStartRow(int row)
 {
 	m_StartRow = row;
+}
+
+void King::SpriteRenderComponent::SetStartColumn(int column)
+{
+	m_StartColumn = column;
 }
 
 void King::SpriteRenderComponent::SetFrameCount(int count)

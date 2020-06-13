@@ -1,6 +1,8 @@
 #pragma once
 #include "SceneObject.h"
 #include "Transform.h"
+#include <string>
+#include <memory>
 
 namespace King
 {

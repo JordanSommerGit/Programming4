@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Game">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Engine\Components">
       <UniqueIdentifier>{16bdc0f2-5b95-4fc5-9e52-5dac73ff9193}</UniqueIdentifier>
     </Filter>
@@ -36,21 +32,6 @@
     </Filter>
     <Filter Include="Engine\Physics">
       <UniqueIdentifier>{952af48f-a874-4bae-8d3e-b439e0c01f9f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Character">
-      <UniqueIdentifier>{08879183-ff02-4e8e-8770-d5fd881a0d7b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Prefabs">
-      <UniqueIdentifier>{264e1159-935a-47bd-82a0-6dcd3a282d90}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Enemies">
-      <UniqueIdentifier>{a4ab36ae-6fad-4fb5-b626-100be2156dcb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Scenes">
-      <UniqueIdentifier>{da5fe098-d7cf-497e-a0ce-2df20823ad9c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\PickUps">
-      <UniqueIdentifier>{dbae0e9f-c5cb-4f4d-bdbc-54882da2a193}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -120,27 +101,6 @@
     <ClInclude Include="Minigin.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Level1.h">
-      <Filter>Game\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>Game\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Box.h">
-      <Filter>Game\Prefabs</Filter>
-    </ClInclude>
-    <ClInclude Include="Projectile.h">
-      <Filter>Game\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Game\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Zenchan.h">
-      <Filter>Game\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="PickUp.h">
-      <Filter>Game\PickUps</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniginPCH.cpp">
@@ -203,32 +163,8 @@
     <ClCompile Include="SceneObject.cpp">
       <Filter>Engine\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>Game\Prefabs</Filter>
-    </ClCompile>
-    <ClCompile Include="Level1.cpp">
-      <Filter>Game\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="Minigin.cpp">
       <Filter>Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Projectile.cpp">
-      <Filter>Game\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Game\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Game\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Zenchan.cpp">
-      <Filter>Game\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="PickUp.cpp">
-      <Filter>Game\PickUps</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

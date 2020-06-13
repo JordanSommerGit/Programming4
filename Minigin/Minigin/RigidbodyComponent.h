@@ -39,7 +39,10 @@ namespace King
 		glm::vec3 GetVelocity() const;
 		void SetVelocity(glm::vec3 velocity);
 
+		bool IsColliding() const;
+
 		void SetApplyGravity(bool apply);
+		void SetApplyDrag(bool apply);
 
 		PhysicState GetState() const;
 
@@ -55,6 +58,8 @@ namespace King
 		glm::vec3 m_Velocity;
 		float m_Drag;
 		bool m_ApplyGravity = true;
+		bool m_ApplyDrag = true;
 		float m_Gravity;
+		bool m_IsColliding;
 	};
 }

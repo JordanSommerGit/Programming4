@@ -29,6 +29,11 @@ namespace King
 		void SetTrigger(bool isTrigger);
 		bool IsTrigger() const;
 
+		void DeactiveBottomCollision(bool deactivate);
+		void DeactiveTopCollision(bool deactivate);
+		void DeactiveLeftCollision(bool deactivate);
+		void DeactiveRighCollision(bool deactivate);
+
 		void OnTriggerEnter(ColliderComponent* other);
 		void OnTriggerExit(ColliderComponent* other);
 		void OnTriggerStay(ColliderComponent* other);
@@ -46,5 +51,10 @@ namespace King
 		float m_Height;
 
 		bool m_IsTrigger;
+
+		bool m_DisableBottom;
+		bool m_DisableTop;
+		bool m_DisableLeft;
+		bool m_DisableRight;
 	};
 }

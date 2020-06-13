@@ -1,5 +1,7 @@
 #pragma once
 #include "SceneManager.h"
+#include <string>
+#include <vector>
 
 namespace King
 {
