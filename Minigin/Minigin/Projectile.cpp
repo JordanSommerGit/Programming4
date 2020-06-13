@@ -12,6 +12,7 @@
 #include "Time.h"
 #include "Character.h"
 #include "Enemy.h"
+#include "Transform.h"
 
 King::Projectile::Projectile(glm::vec3 direction)
 	: m_Sprite{ nullptr }
@@ -37,7 +38,14 @@ void King::Projectile::Initialize()
 	m_pCollider->SetTrigger(true);
 	AddComponent(m_pCollider);
 
-	m_pRigidbody = new RigidbodyComponent(RigidbodyComponent::PhysicState::Kinematic);
+	GameObject* pSubCollider = new GameObject();
+	m_pCollider = new ColliderComponent(46, 46);
+	pSubCollider->AddComponent(m_pCollider);
+	AddChild(pSubCollider);
+	pSubCollider->GetTransform()->SetPosition(2, 2, 0);
+
+	m_pRigidbody = new RigidbodyComponent(RigidbodyComponent::PhysicState::Dynamic);
+	m_pRigidbody->SetApplyGravity(false);
 	AddComponent(m_pRigidbody);
 }
 
@@ -62,6 +70,7 @@ void King::Projectile::Update()
 	{
 		if (m_CurrentPopTime < m_PopTime)
 		{
+			m_pRigidbody->SetApplyGravity(true);
 			m_CurrentPopTime += Time::GetInstance().GetElapsed();
 			m_Sprite->SetStartRow(2);
 			m_Sprite->SetFrameCount(24);

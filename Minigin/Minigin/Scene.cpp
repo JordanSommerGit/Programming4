@@ -65,7 +65,6 @@ void King::Scene::RootInitialize()
 		}
 		m_Objects[i]->Initialize();
 		m_Objects[i]->RootInitialize();
-		m_Objects[i]->SetInitialized(true);
 	}
 }
 

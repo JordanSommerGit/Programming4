@@ -6,13 +6,16 @@
 
 namespace King
 {
+	class GameObject;
 	class Transform final
 	{
 	public:
-		const glm::vec3& GetPosition() const { return m_Position; }
+		void SetGameObject(GameObject* pGameObject);
+		const glm::vec3 GetPosition() const;
 		void SetPosition(float x, float y, float z);
 		void SetPosition(glm::vec3 position);
 	private:
 		glm::vec3 m_Position;
+		GameObject* m_pGameObject;
 	};
 }

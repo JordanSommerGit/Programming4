@@ -25,7 +25,7 @@ namespace King
 
 		void SetRigidbody(RigidbodyComponent* pRigidbody);
 
-		bool IsColliding(RigidbodyComponent* pToCheck, glm::vec3 targetPostion, glm::vec3& outputVelocity);
+		bool Collide(RigidbodyComponent* pToCheck, glm::vec3 targetPostion, glm::vec3& outputVelocity);
 		void SetTrigger(bool isTrigger);
 		bool IsTrigger() const;
 

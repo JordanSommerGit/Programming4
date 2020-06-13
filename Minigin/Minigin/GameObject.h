@@ -20,6 +20,9 @@ namespace King
 		void AddComponent(Component* component);
 		void RemoveComponent(Component* component);
 
+		void AddChild(GameObject* component);
+		void RemoveChild(GameObject* component);
+
 		virtual void OnTriggerEnter(ColliderComponent* other);
 		virtual void OnTriggerExit(ColliderComponent* other);
 		virtual void OnTriggerStay(ColliderComponent* other);
@@ -37,18 +40,53 @@ namespace King
 			return nullptr;
 		}
 
+		template<class T>
+		std::vector<T*> GetComponents(bool inChildren = false)
+		{
+			std::vector<T*> output;
+			for (auto* component : m_Components)
+			{
+				if (typeid(T) == typeid(*component))
+				{
+					output.push_back(static_cast<T*>(component));
+				}
+			}
+
+			if (!inChildren)
+			{
+				return output;
+			}
+
+			for (GameObject* pChild : m_Children)
+			{
+				std::vector<T*> childComponents = pChild->GetComponents<T>();
+				for (auto* component : childComponents)
+				{
+					if (typeid(T) == typeid(*component))
+					{
+						output.push_back(static_cast<T*>(component));
+					}
+				}
+			}
+
+			return output;
+		}
+
 		void SetPosition(float x, float y);
 		Transform* GetTransform();
 
-		GameObject() = default;
+		GameObject* GetParent() const;
+
+		GameObject();
 		virtual ~GameObject();
 		GameObject(const GameObject& other) = delete;
 		GameObject(GameObject&& other) = delete;
 		GameObject& operator=(const GameObject& other) = delete;
 		GameObject& operator=(GameObject&& other) = delete;
-
 	private:
 		Transform m_Transform;
 		std::vector<Component*> m_Components;
+		GameObject* m_pParent;
+		std::vector<GameObject*> m_Children;
 	};
 }

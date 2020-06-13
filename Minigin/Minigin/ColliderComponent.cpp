@@ -31,106 +31,109 @@ void King::ColliderComponent::SetRigidbody(RigidbodyComponent* pRigidbody)
 	m_pRigidbody = pRigidbody;
 }
 
-bool King::ColliderComponent::IsColliding(RigidbodyComponent* pToCheck, glm::vec3 targetPostion, glm::vec3& outputVelocity)
+bool King::ColliderComponent::Collide(RigidbodyComponent* pToCheck, glm::vec3 targetPostion, glm::vec3& outputVelocity)
 {
-	if (targetPostion.x + pToCheck->GetCollider()->GetWidth() < m_pTransform->GetPosition().x)
+	std::vector<ColliderComponent*> pColliders = pToCheck->GetColliders();
+	for (size_t i = 0; i < pColliders.size(); i++)
 	{
-		return false;
-	}
-	if (targetPostion.x > m_pTransform->GetPosition().x + m_Width)
-	{
-		return false;
-	}
-	if (targetPostion.y + pToCheck->GetCollider()->GetHeight() < m_pTransform->GetPosition().y)
-	{
-		return false;
-	}
-	if (targetPostion.y > m_pTransform->GetPosition().y + m_Height)
-	{
-		return false;
-	}
 
-	if (m_pTransform->GetPosition().y > pToCheck->GetTransform()->GetPosition().y + pToCheck->GetCollider()->GetWidth())
-	{
+		if (pColliders[i]->IsTrigger())
+		{
+			continue;
+		}
+
+		if (targetPostion.x + pColliders[i]->GetWidth() < m_pTransform->GetPosition().x)
+		{
+			continue;
+		}
+		if (targetPostion.x > m_pTransform->GetPosition().x + m_Width)
+		{
+			continue;
+		}
+		if (targetPostion.y + pColliders[i]->GetHeight() < m_pTransform->GetPosition().y)
+		{
+			continue;
+		}
+		if (targetPostion.y > m_pTransform->GetPosition().y + m_Height)
+		{
+			continue;
+		}
+
 		if (!IsTrigger())
 		{
-			switch (m_pRigidbody->GetState())
+			if (m_pTransform->GetPosition().y > pToCheck->GetTransform()->GetPosition().y + pColliders[i]->GetWidth())
 			{
-			case RigidbodyComponent::PhysicState::Static:
-				outputVelocity.y = 0;
-				break;
-			case RigidbodyComponent::PhysicState::Kinematic:
-				outputVelocity.y = 0;
-				break;
-			case RigidbodyComponent::PhysicState::Dynamic:
-				outputVelocity.y /= 2;
-				m_pRigidbody->SetVelocity(glm::vec3{ m_pRigidbody->GetVelocity().x, outputVelocity.y, 0 });
-				break;
+				switch (m_pRigidbody->GetState())
+				{
+				case RigidbodyComponent::PhysicState::Static:
+					outputVelocity.y = 0;
+					break;
+				case RigidbodyComponent::PhysicState::Kinematic:
+					outputVelocity.y = 0;
+					break;
+				case RigidbodyComponent::PhysicState::Dynamic:
+					outputVelocity.y /= 2;
+					m_pRigidbody->SetVelocity(glm::vec3{ m_pRigidbody->GetVelocity().x, outputVelocity.y, 0 });
+					break;
+				}
+			}
+
+			if (m_pTransform->GetPosition().y + m_Height < pToCheck->GetTransform()->GetPosition().y)
+			{
+				switch (m_pRigidbody->GetState())
+				{
+				case RigidbodyComponent::PhysicState::Static:
+					outputVelocity.y = 0;
+					break;
+				case RigidbodyComponent::PhysicState::Kinematic:
+					outputVelocity.y = 0;
+					break;
+				case RigidbodyComponent::PhysicState::Dynamic:
+					outputVelocity.y /= 2;
+					m_pRigidbody->SetVelocity(glm::vec3{ m_pRigidbody->GetVelocity().x, outputVelocity.y, 0 });
+					break;
+				}
+			}
+
+			if (m_pTransform->GetPosition().x > pToCheck->GetTransform()->GetPosition().x + pColliders[i]->GetWidth())
+			{
+				switch (m_pRigidbody->GetState())
+				{
+				case RigidbodyComponent::PhysicState::Static:
+					outputVelocity.x = 0;
+					break;
+				case RigidbodyComponent::PhysicState::Kinematic:
+					outputVelocity.x = 0;
+					break;
+				case RigidbodyComponent::PhysicState::Dynamic:
+					outputVelocity.x /= 2;
+					m_pRigidbody->SetVelocity(glm::vec3{ outputVelocity.x, m_pRigidbody->GetVelocity().y, 0 });
+					break;
+				}
+			}
+
+			if (m_pTransform->GetPosition().x + m_Width < pToCheck->GetTransform()->GetPosition().x)
+			{
+				switch (m_pRigidbody->GetState())
+				{
+				case RigidbodyComponent::PhysicState::Static:
+					outputVelocity.x = 0;
+					break;
+				case RigidbodyComponent::PhysicState::Kinematic:
+					outputVelocity.x = 0;
+					break;
+				case RigidbodyComponent::PhysicState::Dynamic:
+					outputVelocity.x /= 2;
+					m_pRigidbody->SetVelocity(glm::vec3{ outputVelocity.x, m_pRigidbody->GetVelocity().y, 0 });
+					break;
+				}
 			}
 		}
-	}
-
-	if (m_pTransform->GetPosition().y + m_Height < pToCheck->GetTransform()->GetPosition().y)
-	{
-		if (!IsTrigger())
+		else
 		{
-			switch (m_pRigidbody->GetState())
-			{
-			case RigidbodyComponent::PhysicState::Static:
-				outputVelocity.y = 0;
-				break;
-			case RigidbodyComponent::PhysicState::Kinematic:
-				outputVelocity.y = 0;
-				break;
-			case RigidbodyComponent::PhysicState::Dynamic:
-				outputVelocity.y /= 2;
-				m_pRigidbody->SetVelocity(glm::vec3{ m_pRigidbody->GetVelocity().x, outputVelocity.y, 0 });
-				break;
-			}
+			OnTriggerStay(pColliders[i]);
 		}
 	}
-
-	if (m_pTransform->GetPosition().x > pToCheck->GetTransform()->GetPosition().x + pToCheck->GetCollider()->GetWidth())
-	{
-		if (!IsTrigger())
-		{
-			switch (m_pRigidbody->GetState())
-			{
-			case RigidbodyComponent::PhysicState::Static:
-				outputVelocity.x = 0;
-				break;
-			case RigidbodyComponent::PhysicState::Kinematic:
-				outputVelocity.x = 0;
-				break;
-			case RigidbodyComponent::PhysicState::Dynamic:
-				outputVelocity.x /= 2;
-				m_pRigidbody->SetVelocity(glm::vec3{ outputVelocity.x, m_pRigidbody->GetVelocity().y, 0 });
-				break;
-			}
-		}
-	}
-
-	if (m_pTransform->GetPosition().x + m_Width < pToCheck->GetTransform()->GetPosition().x)
-	{
-		if (!IsTrigger())
-		{
-			switch (m_pRigidbody->GetState())
-			{
-			case RigidbodyComponent::PhysicState::Static:
-				outputVelocity.x = 0;
-				break;
-			case RigidbodyComponent::PhysicState::Kinematic:
-				outputVelocity.x = 0;
-				break;
-			case RigidbodyComponent::PhysicState::Dynamic:
-				outputVelocity.x /= 2;
-				m_pRigidbody->SetVelocity(glm::vec3{ outputVelocity.x, m_pRigidbody->GetVelocity().y, 0 });
-				break;
-			}
-		}
-	}
-
-	OnTriggerStay(pToCheck->GetCollider());
 	return true;
 }
 

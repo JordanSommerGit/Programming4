@@ -27,8 +27,11 @@ bool King::PhysicsManager::CheckCollision(RigidbodyComponent* pToCheck, glm::vec
 		{
 			continue;
 		}
-		ColliderComponent* pCollider = pRigidbody->GetCollider();
-		pCollider->IsColliding(pToCheck, targetPosition, outputVelocity);
+		std::vector<ColliderComponent*> pColliders = pRigidbody->GetColliders();
+		for (ColliderComponent* pCol : pColliders)
+		{
+			pCol->Collide(pToCheck, targetPosition, outputVelocity);
+		}
 	}
 	return canMove;
 }

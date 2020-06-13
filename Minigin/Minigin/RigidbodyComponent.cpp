@@ -16,8 +16,11 @@ King::RigidbodyComponent::RigidbodyComponent(PhysicState physicState)
 
 void King::RigidbodyComponent::Initialize()
 {
-	m_pColliderComponent = pGameObject->GetComponent<ColliderComponent>();
-	m_pColliderComponent->SetRigidbody(this);
+	m_pColliderComponents = pGameObject->GetComponents<ColliderComponent>(true);
+	for (ColliderComponent* col : m_pColliderComponents)
+	{
+		col->SetRigidbody(this);
+	}
 	m_pTransform = pGameObject->GetTransform();
 	pGameObject->GetScene()->GetPhysicsManager()->AddRigidbody(this);
 }
@@ -29,16 +32,15 @@ void King::RigidbodyComponent::Update()
 		return;
 	}
 
-	if (m_PhysicsState != PhysicState::Kinematic)
+	if (m_ApplyGravity)
 	{
-		m_Velocity += glm::vec3{ 0,1,0 } *m_Gravity;
+		m_Velocity += glm::vec3{ 0,1,0 } * m_Gravity;
 	}
 	
 	glm::vec3 targetPosition = m_pTransform->GetPosition() + m_Velocity * Time::GetInstance().GetElapsed();
-	if (!m_pColliderComponent->IsTrigger())
-	{
-		pGameObject->GetScene()->GetPhysicsManager()->CheckCollision(this, targetPosition, m_Velocity);
-	}
+
+	pGameObject->GetScene()->GetPhysicsManager()->CheckCollision(this, targetPosition, m_Velocity);
+
 	targetPosition = m_pTransform->GetPosition() + m_Velocity * Time::GetInstance().GetElapsed();
 	m_pTransform->SetPosition(targetPosition);
 
@@ -47,7 +49,12 @@ void King::RigidbodyComponent::Update()
 
 King::ColliderComponent* King::RigidbodyComponent::GetCollider()
 {
-	return m_pColliderComponent;
+	return m_pColliderComponents[0];
+}
+
+std::vector<King::ColliderComponent*> King::RigidbodyComponent::GetColliders()
+{
+	return m_pColliderComponents;
 }
 
 King::Transform* King::RigidbodyComponent::GetTransform()
@@ -63,6 +70,11 @@ glm::vec3 King::RigidbodyComponent::GetVelocity() const
 void King::RigidbodyComponent::SetVelocity(glm::vec3 velocity)
 {
 	m_Velocity = velocity;
+}
+
+void King::RigidbodyComponent::SetApplyGravity(bool apply)
+{
+	m_ApplyGravity = apply;
 }
 
 King::RigidbodyComponent::PhysicState King::RigidbodyComponent::GetState() const

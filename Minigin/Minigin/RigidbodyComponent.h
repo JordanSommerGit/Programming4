@@ -4,6 +4,7 @@
 #pragma warning (disable:4201)
 #include <glm/vec3.hpp>
 #pragma warning(pop)
+#include <vector>
 
 namespace King
 {
@@ -32,10 +33,13 @@ namespace King
 		void Update() override;
 
 		ColliderComponent* GetCollider();
+		std::vector<ColliderComponent*> GetColliders();
 		Transform* GetTransform();
 
 		glm::vec3 GetVelocity() const;
 		void SetVelocity(glm::vec3 velocity);
+
+		void SetApplyGravity(bool apply);
 
 		PhysicState GetState() const;
 
@@ -45,11 +49,12 @@ namespace King
 	private:
 		PhysicState m_PhysicsState;
 
-		ColliderComponent* m_pColliderComponent;
+		std::vector<ColliderComponent*> m_pColliderComponents;
 		Transform* m_pTransform;
 
 		glm::vec3 m_Velocity;
 		float m_Drag;
+		bool m_ApplyGravity = true;
 		float m_Gravity;
 	};
 }

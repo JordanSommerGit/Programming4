@@ -3,6 +3,14 @@
 #include "ResourceManager.h"
 #include "Renderer.h"
 #include "ColliderComponent.h"
+#include "GameObject.h"
+#include "Scene.h"
+
+King::GameObject::GameObject()
+	: m_pParent{ nullptr }
+{
+	m_Transform.SetGameObject(this);
+}
 
 King::GameObject::~GameObject()
 {
@@ -60,6 +68,21 @@ void King::GameObject::RemoveComponent(Component* component)
 	}
 }
 
+void King::GameObject::AddChild(GameObject* child)
+{
+	child->m_pParent = this;
+	GetScene()->Add(child);
+	m_Children.push_back(child);
+}
+
+void King::GameObject::RemoveChild(GameObject* child)
+{
+	if (child != nullptr)
+	{
+		m_Children.erase(std::find(m_Children.begin(), m_Children.end(), child));
+	}
+}
+
 void King::GameObject::OnTriggerEnter(ColliderComponent*)
 {
 }
@@ -81,4 +104,9 @@ void King::GameObject::SetPosition(float x, float y)
 King::Transform* King::GameObject::GetTransform()
 {
 	return &m_Transform;
+}
+
+King::GameObject* King::GameObject::GetParent() const
+{
+	return m_pParent;
 }

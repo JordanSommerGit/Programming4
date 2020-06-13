@@ -27,6 +27,12 @@ void King::Zenchan::Initialize()
 	m_Sprite->SetSprite("Enemies.png", 50, 50, 27, 8, 8, 0);
 	AddComponent(m_Sprite);
 
+	GameObject* pSubCollider = new GameObject();
+	m_pCollider = new ColliderComponent(46, 46);
+	pSubCollider->AddComponent(m_pCollider);
+	AddChild(pSubCollider);
+	pSubCollider->GetTransform()->SetPosition(2, 2, 0);
+
 	m_pCollider = new ColliderComponent(50, 50);
 	AddComponent(m_pCollider);
 
