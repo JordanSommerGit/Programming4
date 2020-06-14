@@ -19,6 +19,8 @@ namespace King
 		void EarlyUpdate() override;
 		void Update() override;
 
+		void OnActivate() override;
+
 		Level3(const Level3& other) = delete;
 		Level3(Level3&& other) = delete;
 		Level3& operator=(const Level3& other) = delete;

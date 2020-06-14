@@ -1,10 +1,12 @@
 #pragma once
+#include "Singleton.h"
+#include <map>
 #include <XInput.h>
 #include <SDL.h>
-#include "Singleton.h"
 
 namespace King
 {
+	class Command;
 	enum class ControllerButton
 	{
 		ButtonA,
@@ -21,11 +23,18 @@ namespace King
 	{
 	public:
 		bool ProcessInput();
-		bool IsPressed(ControllerButton button) const;
+		bool IsPressed(ControllerButton button);
 		SDL_Event GetEvent() const;
+
+		void AddControllerCommand(ControllerButton button, Command* pCommand);
+		void AddKeyboardCommand(char button, Command* pCommand);
+		bool ExectueCommand(ControllerButton button);
+		bool ExectueCommand(char key);
 	private:
 		XINPUT_STATE m_CurrentState{};
 		SDL_Event m_Event;
+		std::map<ControllerButton, Command*> m_pControllerCommands;
+		std::map<char, Command*> m_pKeyboardCommands;
 	};
 
 }

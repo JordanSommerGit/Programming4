@@ -1,5 +1,7 @@
 #include "Level2.h"
 #include "GameObject.h"
+#include "Transform.h"
+#include "Character.h"
 #include "TextRenderComponent.h"
 #include "LevelLoader.h"
 #include "ScoreObserver.h"
@@ -19,8 +21,8 @@ King::Level2::Level2()
 
 void King::Level2::Initialize()
 {
-	LevelLoader* loader = new LevelLoader{ "../Data/Level2.txt" };
-	Add(loader);
+	m_pLoader = new LevelLoader{ "../Data/Level2.txt" };
+	Add(m_pLoader);
 
 	auto pText = new GameObject();
 	m_ScoreText = new TextRenderComponent();
@@ -58,6 +60,10 @@ void King::Level2::Update()
 		m_NextLevel = true;
 	}
 
+	if (m_pLifeObserver->GetIsDead())
+	{
+		SceneManager::GetInstance().SetActiveScene("Splash");
+	}
 
 	if (m_NextLevel)
 	{
@@ -68,4 +74,9 @@ void King::Level2::Update()
 	{
 		SceneManager::GetInstance().SetActiveScene("Level3");
 	}
+}
+
+void King::Level2::OnActivate()
+{
+
 }

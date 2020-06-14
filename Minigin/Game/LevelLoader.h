@@ -5,6 +5,7 @@
 namespace King
 {
 	class Character;
+	class Enemy;
 	class LevelLoader : public GameObject
 	{
 	public:

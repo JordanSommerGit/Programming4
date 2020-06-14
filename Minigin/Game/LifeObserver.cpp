@@ -20,6 +20,7 @@ void King::LifeObserver::OnNotify(GameObject* pSource, std::string event)
 				if (m_Lives == 0)
 				{
 					m_IsDead = true;
+					m_Lives = 4;
 				}
 				break;
 			case 1:

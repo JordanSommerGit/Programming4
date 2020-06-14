@@ -1,5 +1,7 @@
 #include "Level3.h"
 #include "GameObject.h"
+#include "Transform.h"
+#include "Character.h"
 #include "TextRenderComponent.h"
 #include "LevelLoader.h"
 #include "ScoreObserver.h"
@@ -50,8 +52,18 @@ void King::Level3::Update()
 	m_ScoreText->SetText(std::to_string(m_pScoreObserver->GetScore()));
 	m_LifeText->SetText(std::to_string(m_pLifeObserver->GetLives()));
 
+	if (m_pLifeObserver->GetIsDead())
+	{
+		SceneManager::GetInstance().SetActiveScene("Splash");
+	}
+
 	if (m_pLoader->GetCharacter()->GetTransform()->GetPosition().y > 424.f)
 	{
 		m_pLoader->GetCharacter()->GetTransform()->SetPosition(m_pLoader->GetCharacter()->GetTransform()->GetPosition().x, -39, 0);
 	}
+}
+
+void King::Level3::OnActivate()
+{
+
 }

@@ -22,6 +22,8 @@ King::Character::Character()
 	, m_pRigidbody{ nullptr }
 	, m_CurrentJumpTime{ 0.4f }
 	, m_JumpTime{ 0.4f }
+	, m_CurrentSpawnTime{ 0.f }
+	, m_SpawnTime{ 0.5f }
 	, m_CurrentAttackAnimTime{ 0.3f }
 	, m_AttackAnimTime{ 0.3f }
 	, m_CurrentAttackCDTime{ 0.5f }
@@ -60,6 +62,12 @@ void King::Character::Update()
 {
 	using namespace King;
 
+	if (m_CurrentSpawnTime < m_SpawnTime)
+	{
+		m_CurrentSpawnTime += Time::GetInstance().GetElapsed();
+		return;
+	}
+
 	//Input
 	if (InputManager::GetInstance().GetEvent().type == SDL_EventType::SDL_KEYDOWN)
 	{
@@ -71,13 +79,13 @@ void King::Character::Update()
 		{
 			m_ADown = true;
 		}
-		if (InputManager::GetInstance().GetEvent().key.keysym.scancode == SDL_SCANCODE_SPACE)
+		if (InputManager::GetInstance().GetEvent().key.keysym.scancode == SDL_SCANCODE_W)
 		{
-			m_SpaceDown = true;
+			m_WDown = true;
 		}
-		if (InputManager::GetInstance().GetEvent().key.keysym.scancode == SDL_SCANCODE_J)
+		if (InputManager::GetInstance().GetEvent().key.keysym.scancode == SDL_SCANCODE_F)
 		{
-			m_JDown = true;
+			m_FDown = true;
 		}
 	}
 
@@ -91,13 +99,13 @@ void King::Character::Update()
 		{
 			m_ADown = false;
 		}
-		if (InputManager::GetInstance().GetEvent().key.keysym.scancode == SDL_SCANCODE_SPACE)
+		if (InputManager::GetInstance().GetEvent().key.keysym.scancode == SDL_SCANCODE_W)
 		{
-			m_SpaceDown = false;
+			m_WDown = false;
 		}
-		if (InputManager::GetInstance().GetEvent().key.keysym.scancode == SDL_SCANCODE_J)
+		if (InputManager::GetInstance().GetEvent().key.keysym.scancode == SDL_SCANCODE_F)
 		{
-			m_JDown = false;
+			m_FDown = false;
 		}
 	}
 
@@ -136,14 +144,14 @@ void King::Character::Update()
 		m_pRigidbody->SetVelocity(glm::vec3{ -150,m_pRigidbody->GetVelocity().y,0 });
 		m_LookingRight = false;
 	}
-	if (m_SpaceDown)
+	if (m_WDown)
 	{
 		if (m_pRigidbody->IsColliding() && m_CurrentJumpTime >= m_JumpTime)
 		{
 			m_CurrentJumpTime = 0.f;
 		}
 	}
-	if (m_JDown && m_CurrentAttackCDTime >= m_AttackCDTime)
+	if (m_FDown && m_CurrentAttackCDTime >= m_AttackCDTime)
 	{
 		Projectile* pProjectile;
 		if (m_LookingRight)
@@ -183,6 +191,12 @@ void King::Character::Update()
 
 void King::Character::Render() const
 {
+}
+
+void King::Character::Respawn()
+{
+	GetTransform()->SetPosition(100, 300, 0);
+	m_CurrentSpawnTime = 0.f;
 }
 
 

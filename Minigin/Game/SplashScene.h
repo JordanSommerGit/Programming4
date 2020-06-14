@@ -6,7 +6,7 @@ namespace King
 	class SplashScene : public Scene
 	{
 	public:
-		SplashScene() = default;
+		SplashScene();
 		~SplashScene() = default;
 
 		void Initialize() override;

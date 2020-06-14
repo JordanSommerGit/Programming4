@@ -17,14 +17,17 @@ namespace King
 		virtual void EarlyUpdate();
 		virtual void Update();
 		virtual void Render() const;
+		
+		virtual void OnActivate();
 
 		void RootInitialize();
 		void RootEarlyUpdate();
 		void RootUpdate();
 		void RootRender();
-
 		void CleanUp();
+
 		std::string GetName() const;
+		bool IsInitialized() const;
 
 		explicit Scene(const std::string& name);
 		virtual ~Scene();
@@ -35,7 +38,7 @@ namespace King
 
 		PhysicsManager* GetPhysicsManager();
 	private: 
-
+		bool m_Initialized;
 		std::string m_Name;
 		PhysicsManager* m_pPhysicsManager;
 

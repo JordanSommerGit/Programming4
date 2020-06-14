@@ -1,6 +1,25 @@
-﻿  Level2.cpp
+﻿  Bounds.cpp
+  Character.cpp
+  Enemy.cpp
+  EnemyObserver.cpp
+  FrenchFries.cpp
+  Game.cpp
+  Level1.cpp
+  Level2.cpp
   Level3.cpp
   LevelLoader.cpp
+  LifeObserver.cpp
+  Main.cpp
+  Maita.cpp
+  Melon.cpp
+  PickUp.cpp
+  Platform.cpp
+  Projectile.cpp
+  Score.cpp
+  ScoreObserver.cpp
+  SplashScene.cpp
+  Generating Code...
+  Compiling...
   Zenchan.cpp
   Generating Code...
      Creating library D:\DAE\Git\Programming4\Minigin\Debug\Game.lib and object D:\DAE\Git\Programming4\Minigin\Debug\Game.exp

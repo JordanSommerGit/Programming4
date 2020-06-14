@@ -23,6 +23,8 @@ namespace King
 		void Update() override;
 		void Render() const override;
 
+		void Respawn();
+
 		void OnTriggerStay(ColliderComponent* other) override;
 	private:
 		SpriteRenderComponent* m_Sprite;
@@ -31,10 +33,13 @@ namespace King
 
 		bool m_ADown;
 		bool m_DDown;
-		bool m_SpaceDown;
-		bool m_JDown;
+		bool m_WDown;
+		bool m_FDown;
 
 		bool m_LookingRight;
+
+		float m_CurrentSpawnTime;
+		float m_SpawnTime;
 
 		float m_CurrentJumpTime;
 		float m_JumpTime;

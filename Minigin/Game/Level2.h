@@ -7,6 +7,7 @@ namespace King
 	class ScoreObserver;
 	class EnemyObserver;
 	class LifeObserver;
+	class LevelLoader;
 	class Level2 : public Scene
 	{
 	public:
@@ -16,6 +17,8 @@ namespace King
 		void Initialize() override;
 		void EarlyUpdate() override;
 		void Update() override;
+
+		void OnActivate() override;
 
 		Level2(const Level2& other) = delete;
 		Level2(Level2&& other) = delete;
@@ -28,6 +31,8 @@ namespace King
 		ScoreObserver* m_pScoreObserver;
 		EnemyObserver* m_pEnemyObserver;
 		LifeObserver* m_pLifeObserver;
+
+		LevelLoader* m_pLoader;
 
 		float m_CurrentNextLevelTime;
 		float m_NextLevelTime;

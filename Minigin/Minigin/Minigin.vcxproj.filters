@@ -110,6 +110,9 @@
     <ClInclude Include="Observer.h">
       <Filter>Engine\Event</Filter>
     </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Engine\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MiniginPCH.cpp">
@@ -180,6 +183,9 @@
     </ClCompile>
     <ClCompile Include="Observer.cpp">
       <Filter>Engine\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>Engine\Input</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

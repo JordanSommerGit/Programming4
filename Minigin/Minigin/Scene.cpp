@@ -55,6 +55,10 @@ void Scene::Render() const
 {
 }
 
+void King::Scene::OnActivate()
+{
+}
+
 void King::Scene::RootInitialize()
 {
 	for (size_t i = 0; i < m_Objects.size(); i++)
@@ -66,6 +70,7 @@ void King::Scene::RootInitialize()
 		m_Objects[i]->Initialize();
 		m_Objects[i]->RootInitialize();
 	}
+	m_Initialized = true;
 }
 
 void King::Scene::RootEarlyUpdate()
@@ -127,5 +132,10 @@ void King::Scene::CleanUp()
 std::string King::Scene::GetName() const
 {
 	return m_Name;
+}
+
+bool King::Scene::IsInitialized() const
+{
+	return m_Initialized;
 }
 

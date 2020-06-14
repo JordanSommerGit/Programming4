@@ -1,6 +1,6 @@
 #include "MiniginPCH.h"
 #include "InputManager.h"
-
+#include "Command.h"
 
 bool King::InputManager::ProcessInput()
 {
@@ -26,10 +26,28 @@ bool King::InputManager::ProcessInput()
 		}
 	}
 
+	//Commands
+	if (m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_A)
+	{
+		ExectueCommand(ControllerButton::ButtonA);
+	}
+	else if (m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_B)
+	{
+		ExectueCommand(ControllerButton::ButtonB);
+	}
+	else if (m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_X)
+	{
+		ExectueCommand(ControllerButton::ButtonX);
+	}
+	else if (m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_Y)
+	{
+		ExectueCommand(ControllerButton::ButtonY);
+	}
+
 	return true;
 }
 
-bool King::InputManager::IsPressed(ControllerButton button) const
+bool King::InputManager::IsPressed(ControllerButton button)
 {
 	switch (button)
 	{
@@ -45,8 +63,38 @@ bool King::InputManager::IsPressed(ControllerButton button) const
 	}
 }
 
+bool King::InputManager::ExectueCommand(ControllerButton button)
+{
+	if (m_pControllerCommands.find(button) != m_pControllerCommands.end())
+	{
+		m_pControllerCommands[button]->Execute();
+		return true;
+	}
+	return false;
+}
+
+bool King::InputManager::ExectueCommand(char key)
+{
+	if (m_pKeyboardCommands.find(key) != m_pKeyboardCommands.end())
+	{
+		m_pKeyboardCommands[key]->Execute();
+		return true;
+	}
+	return false;
+}
+
 SDL_Event King::InputManager::GetEvent() const
 {
 	return m_Event;
+}
+
+void King::InputManager::AddControllerCommand(ControllerButton button, Command* pCommand)
+{
+	m_pControllerCommands[button] = pCommand;
+}
+
+void King::InputManager::AddKeyboardCommand(char button, Command* pCommand)
+{
+	m_pKeyboardCommands[button] = pCommand;
 }
 

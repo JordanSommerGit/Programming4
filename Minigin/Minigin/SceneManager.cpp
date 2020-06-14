@@ -59,6 +59,10 @@ void King::SceneManager::SetActiveScene(const std::string& name)
 		if (m_Scenes[i]->GetName() == name)
 		{
 			m_pActiveScene = m_Scenes[i];
+			if (m_pActiveScene->IsInitialized())
+			{
+				m_pActiveScene->OnActivate();
+			}
 		}
 	}
 }

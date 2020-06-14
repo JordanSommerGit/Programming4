@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "SceneManager.h"
 #include "Scene.h"
+#include "SplashScene.h"
 #include "Level1.h"
 #include "Level2.h"
 #include "Level3.h"
@@ -20,6 +21,9 @@ King::Game::Game()
 	SceneManager::GetInstance().AddScene(pScene);
 
 	pScene = new Level1();
+	SceneManager::GetInstance().AddScene(pScene);
+
+	pScene = new SplashScene();
 	SceneManager::GetInstance().AddScene(pScene);
 
 
