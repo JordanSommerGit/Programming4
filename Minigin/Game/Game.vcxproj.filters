@@ -26,6 +26,9 @@
     <Filter Include="Game\Helpers">
       <UniqueIdentifier>{7dd362e6-e19a-4712-8849-42558f451ac7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Character\BubStates">
+      <UniqueIdentifier>{51e0e211-d3a7-485e-9eb7-f7bad0085edd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -85,10 +88,19 @@
     <ClCompile Include="EnemyObserver.cpp">
       <Filter>Game\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="LifeObserver.cpp">
+    <ClCompile Include="SplashScene.cpp">
+      <Filter>Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Bub.cpp">
       <Filter>Game\Character</Filter>
     </ClCompile>
-    <ClCompile Include="SplashScene.cpp">
+    <ClCompile Include="Bob.cpp">
+      <Filter>Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterObserver.cpp">
+      <Filter>Game\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScene.cpp">
       <Filter>Game\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -147,10 +159,22 @@
     <ClInclude Include="EnemyObserver.h">
       <Filter>Game\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="LifeObserver.h">
+    <ClInclude Include="SplashScene.h">
+      <Filter>Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Bub.h">
       <Filter>Game\Character</Filter>
     </ClInclude>
-    <ClInclude Include="SplashScene.h">
+    <ClInclude Include="Bob.h">
+      <Filter>Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterObserver.h">
+      <Filter>Game\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="BubAnimationStates.h">
+      <Filter>Game\Character\BubStates</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
       <Filter>Game\Scenes</Filter>
     </ClInclude>
   </ItemGroup>

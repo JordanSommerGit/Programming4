@@ -2,7 +2,8 @@
 #include <fstream>
 #include "GameObject.h"
 #include "Scene.h"
-#include "Character.h"
+#include "Bub.h"
+#include "Bob.h"
 #include "Bounds.h"
 #include "Platform.h"
 #include "Zenchan.h"
@@ -71,8 +72,11 @@ void King::LevelLoader::Initialize()
 
 		switch (prefix)
 		{
-		case 'C':
-			AddCharacter(posX, posY);
+		case 'F':
+			AddBub(posX, posY);
+			break;
+		case 'S':
+			AddBob(posX, posY);
 			break;
 		case 'B':
 			AddBounds(width, height, posX, posY);
@@ -90,9 +94,22 @@ void King::LevelLoader::Initialize()
 	}
 }
 
-King::Character* King::LevelLoader::GetCharacter() const
+King::Character* King::LevelLoader::GetBub() const
 {
-	return m_pCharacter;
+	return m_pBub;
+}
+
+King::Character* King::LevelLoader::GetBob() const
+{
+	return m_pBob;
+}
+
+void King::LevelLoader::SpawnBob()
+{
+	auto bob = new Bob();
+	m_pBob = bob;
+	bob->SetPosition(m_BobPosX, m_BobPosY);
+	GetScene()->Add(bob);
 }
 
 void King::LevelLoader::AddLevel(std::string filename)
@@ -104,12 +121,18 @@ void King::LevelLoader::AddLevel(std::string filename)
 	GetScene()->Add(mapGo);
 }
 
-void King::LevelLoader::AddCharacter(float posX, float posY)
+void King::LevelLoader::AddBub(float posX, float posY)
 {
-	auto character = new Character();
-	m_pCharacter = character;
-	character->SetPosition(posX, posY);
-	GetScene()->Add(character);
+	auto bub = new Bub();
+	m_pBub = bub;
+	bub->SetPosition(posX, posY);
+	GetScene()->Add(bub);
+}
+
+void King::LevelLoader::AddBob(float posX, float posY)
+{
+	m_BobPosX = posX;
+	m_BobPosY = posY;
 }
 
 void King::LevelLoader::AddBounds(float width, float height, float posX, float posY)

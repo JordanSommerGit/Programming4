@@ -15,6 +15,7 @@ PhysicsManager* King::Scene::GetPhysicsManager()
 
 Scene::Scene(const std::string& name)
 	: m_Name(name)
+	, m_Initialized(false)
 {
 	m_pPhysicsManager = new PhysicsManager();
 }
@@ -137,5 +138,10 @@ std::string King::Scene::GetName() const
 bool King::Scene::IsInitialized() const
 {
 	return m_Initialized;
+}
+
+void King::Scene::SetIsInitialized(bool init)
+{
+	m_Initialized = init;
 }
 

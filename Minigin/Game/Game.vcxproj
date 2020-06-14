@@ -19,17 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bob.cpp" />
     <ClCompile Include="Bounds.cpp" />
+    <ClCompile Include="Bub.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyObserver.cpp" />
     <ClCompile Include="FrenchFries.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="Level1.cpp" />
     <ClCompile Include="Level2.cpp" />
     <ClCompile Include="Level3.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
-    <ClCompile Include="LifeObserver.cpp" />
+    <ClCompile Include="CharacterObserver.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Maita.cpp" />
     <ClCompile Include="Melon.cpp" />
@@ -42,17 +45,21 @@
     <ClCompile Include="Zenchan.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bob.h" />
     <ClInclude Include="Bounds.h" />
+    <ClInclude Include="Bub.h" />
+    <ClInclude Include="BubAnimationStates.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyObserver.h" />
     <ClInclude Include="FrenchFries.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="Level1.h" />
     <ClInclude Include="Level2.h" />
     <ClInclude Include="Level3.h" />
     <ClInclude Include="LevelLoader.h" />
-    <ClInclude Include="LifeObserver.h" />
+    <ClInclude Include="CharacterObserver.h" />
     <ClInclude Include="Maita.h" />
     <ClInclude Include="Melon.h" />
     <ClInclude Include="PickUp.h" />

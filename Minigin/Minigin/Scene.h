@@ -28,6 +28,7 @@ namespace King
 
 		std::string GetName() const;
 		bool IsInitialized() const;
+		void SetIsInitialized(bool init);
 
 		explicit Scene(const std::string& name);
 		virtual ~Scene();

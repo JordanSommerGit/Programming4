@@ -6,7 +6,7 @@ namespace King
 	class TextRenderComponent;
 	class ScoreObserver;
 	class EnemyObserver;
-	class LifeObserver;
+	class CharacterObserver;
 	class LevelLoader;
 	class Level1 : public Scene
 	{
@@ -30,12 +30,14 @@ namespace King
 
 		ScoreObserver* m_pScoreObserver;
 		EnemyObserver* m_pEnemyObserver;
-		LifeObserver* m_pLifeObserver;
+		CharacterObserver* m_pCharacterObserver;
 
 		LevelLoader* m_pLoader;
 
 		float m_CurrentNextLevelTime;
 		float m_NextLevelTime;
 		bool m_NextLevel;
+
+		bool m_Player2Spawned;
 	};
 }

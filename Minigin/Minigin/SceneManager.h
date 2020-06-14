@@ -24,5 +24,6 @@ namespace King
 		~SceneManager();
 		std::vector<Scene*> m_Scenes;
 		Scene* m_pActiveScene;
+		Scene* m_pSwitchToScene;
 	};
 }

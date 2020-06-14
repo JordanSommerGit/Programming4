@@ -36,8 +36,11 @@ void King::Maita::Initialize()
 	AddComponent(m_pCollider);
 
 	m_pRigidbody = new RigidbodyComponent(RigidbodyComponent::PhysicState::Dynamic);
-	//m_pRigidbody->SetApplyDrag(false);
+	m_pRigidbody->SetApplyGravity(false);
 	AddComponent(m_pRigidbody);
+
+	m_CurrentVelocity.y = -100;
+	m_CurrentVelocity.x = -100;
 
 	EventSystem::GetInstance().Notify(this, "ENEMY_SPAWNED");
 }
@@ -48,12 +51,15 @@ void King::Maita::Update()
 	{
 		m_CurrentVelocity.x = -m_CurrentVelocity.x;
 	}
+	if (m_pRigidbody->GetVelocity().y == 0.f)
+	{
+		m_CurrentVelocity.y = -m_CurrentVelocity.y;
+	}
 
 	if (m_IsBubbled)
 	{
 		m_Sprite->SetStartRow(2);
 		m_pCollider->SetTrigger(true);
-		m_pRigidbody->SetApplyGravity(false);
 		m_pRigidbody->SetApplyDrag(false);
 
 		if (m_IsPopping)
@@ -92,7 +98,6 @@ void King::Maita::Update()
 	else
 	{
 		m_pRigidbody->SetVelocity(m_CurrentVelocity);
-		m_pRigidbody->SetApplyGravity(true);
 		m_pRigidbody->SetApplyDrag(true);
 		if (m_CurrentVelocity.x > 0)
 		{

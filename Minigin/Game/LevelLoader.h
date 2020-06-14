@@ -19,10 +19,13 @@ namespace King
 
 		void Initialize() override;
 
-		Character* GetCharacter() const;
+		Character* GetBub() const;
+		Character* GetBob() const;
+		void SpawnBob();
 	private:
 		void AddLevel(std::string filename);
-		void AddCharacter(float posX, float posY);
+		void AddBub(float posX, float posY);
+		void AddBob(float posX, float posY);
 		void AddBounds(float width, float height, float posX, float posY);
 		void AddPlatform(float width, float height, float posX, float posY);
 		void AddZenchan(float posX, float posY);
@@ -30,6 +33,9 @@ namespace King
 
 		std::string m_Filename;
 
-		Character* m_pCharacter;
+		Character* m_pBub;
+		Character* m_pBob;
+		float m_BobPosX;
+		float m_BobPosY;
 	};
 }

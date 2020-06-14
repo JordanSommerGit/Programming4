@@ -4,14 +4,26 @@
 
 void King::SceneManager::Initialize()
 {
-	for (auto& scene : m_Scenes)
-	{
-		scene->Initialize();
-	}
+
 }
 
 void King::SceneManager::EarlyUpdate()
 {
+	bool switchedScenes = false;
+	if (m_pActiveScene != m_pSwitchToScene)
+	{
+		m_pActiveScene = m_pSwitchToScene;
+		switchedScenes = true;
+	}
+	if (!m_pActiveScene->IsInitialized())
+	{
+		m_pActiveScene->Initialize();
+		m_pActiveScene->SetIsInitialized(true);
+	}
+	if (switchedScenes)
+	{
+		m_pActiveScene->OnActivate();
+	}
 	m_pActiveScene->EarlyUpdate();
 	m_pActiveScene->RootEarlyUpdate();
 }
@@ -43,6 +55,7 @@ King::Scene& King::SceneManager::CreateScene(const std::string& name)
 	auto scene = new Scene(name);
 	m_Scenes.push_back(scene);
 	m_pActiveScene = scene;
+	m_pSwitchToScene = scene;
 	return *scene;
 }
 
@@ -50,6 +63,7 @@ void King::SceneManager::AddScene(Scene* pScene)
 {
 	m_Scenes.push_back(pScene);
 	m_pActiveScene = pScene;
+	m_pSwitchToScene = pScene;
 }
 
 void King::SceneManager::SetActiveScene(const std::string& name)
@@ -58,11 +72,7 @@ void King::SceneManager::SetActiveScene(const std::string& name)
 	{
 		if (m_Scenes[i]->GetName() == name)
 		{
-			m_pActiveScene = m_Scenes[i];
-			if (m_pActiveScene->IsInitialized())
-			{
-				m_pActiveScene->OnActivate();
-			}
+			m_pSwitchToScene = m_Scenes[i];
 		}
 	}
 }

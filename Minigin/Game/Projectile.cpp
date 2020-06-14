@@ -14,10 +14,11 @@
 #include "Enemy.h"
 #include "Transform.h"
 
-King::Projectile::Projectile(glm::vec3 direction)
+King::Projectile::Projectile(glm::vec3 direction, Color color)
 	: m_Sprite{ nullptr }
 	, m_pRigidbody{ nullptr }
 	, m_pCollider{ nullptr }
+	, m_Color{ color }
 	, m_Direction{ direction }
 	, m_Speed{ 300.f }
 	, m_FloatSpeed{ 50.f }
@@ -31,7 +32,15 @@ King::Projectile::Projectile(glm::vec3 direction)
 void King::Projectile::Initialize()
 {
 	m_Sprite = new SpriteRenderComponent();
-	m_Sprite->SetSprite("Projectile.png", 40, 40, 12, 8, 8, 0);
+	switch (m_Color)
+	{
+	case King::Projectile::Green:
+		m_Sprite->SetSprite("Projectile.png", 40, 40, 12, 8, 8, 0);
+		break;
+	case King::Projectile::Blue:
+		m_Sprite->SetSprite("Projectile.png", 40, 40, 12, 8, 8, 1);
+		break;
+	}
 	AddComponent(m_Sprite);
 
 	m_pCollider = new ColliderComponent(40, 40);

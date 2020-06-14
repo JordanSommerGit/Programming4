@@ -1,3 +1,4 @@
+#include "MiniginPCH.h"
 #include "Level2.h"
 #include "GameObject.h"
 #include "Transform.h"
@@ -6,10 +7,11 @@
 #include "LevelLoader.h"
 #include "ScoreObserver.h"
 #include "EnemyObserver.h"
-#include "LifeObserver.h"
+#include "CharacterObserver.h"
 #include "EventSystem.h"
 #include "Font.h"
 #include "Time.h"
+#include "InputManager.h"
 
 King::Level2::Level2()
 	: Scene("Level2")
@@ -41,7 +43,7 @@ void King::Level2::Initialize()
 
 	m_pScoreObserver = EventSystem::GetInstance().GetObserver<ScoreObserver>();
 	m_pEnemyObserver = EventSystem::GetInstance().GetObserver<EnemyObserver>();
-	m_pLifeObserver = EventSystem::GetInstance().GetObserver<LifeObserver>();
+	m_pCharacterObserver = EventSystem::GetInstance().GetObserver<CharacterObserver>();
 
 	//GetPhysicsManager()->EnableDebugRendering(true);
 }
@@ -53,16 +55,32 @@ void King::Level2::EarlyUpdate()
 void King::Level2::Update()
 {
 	m_ScoreText->SetText(std::to_string(m_pScoreObserver->GetScore()));
-	m_LifeText->SetText(std::to_string(m_pLifeObserver->GetLives()));
+	m_LifeText->SetText(std::to_string(m_pCharacterObserver->GetLives()));
+
+	if (!m_Player2Spawned)
+	{
+		if (InputManager::GetInstance().GetEvent().type == SDL_KEYDOWN && InputManager::GetInstance().GetEvent().key.keysym.scancode == SDL_SCANCODE_P)
+		{
+			m_pLoader->SpawnBob();
+			EventSystem::GetInstance().Notify(nullptr, "PLAYER2_SPAWNED");
+			m_Player2Spawned = true;
+		}
+		if (InputManager::GetInstance().IsPressed(ControllerButton::ButtonY, 1))
+		{
+			m_pLoader->SpawnBob();
+			EventSystem::GetInstance().Notify(nullptr, "PLAYER2_SPAWNED");
+			m_Player2Spawned = true;
+		}
+	}
 
 	if (m_pEnemyObserver->GetNewLevel())
 	{
 		m_NextLevel = true;
 	}
 
-	if (m_pLifeObserver->GetIsDead())
+	if (m_pCharacterObserver->GetIsDead())
 	{
-		SceneManager::GetInstance().SetActiveScene("Splash");
+		SceneManager::GetInstance().SetActiveScene("GameOver");
 	}
 
 	if (m_NextLevel)
@@ -74,9 +92,14 @@ void King::Level2::Update()
 	{
 		SceneManager::GetInstance().SetActiveScene("Level3");
 	}
+
+	if (m_pCharacterObserver->GetPlayer2Spawned() && !m_Player2Spawned)
+	{
+		m_pLoader->SpawnBob();
+		m_Player2Spawned = true;
+	}
 }
 
 void King::Level2::OnActivate()
 {
-
 }

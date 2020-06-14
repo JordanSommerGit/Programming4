@@ -8,7 +8,7 @@ namespace King
 	class EnemyObserver;
 	class Character;
 	class LevelLoader;
-	class LifeObserver;
+	class CharacterObserver;
 	class Level3 : public Scene
 	{
 	public:
@@ -31,8 +31,10 @@ namespace King
 
 		ScoreObserver* m_pScoreObserver;
 		EnemyObserver* m_pEnemyObserver;
-		LifeObserver* m_pLifeObserver;
+		CharacterObserver* m_pCharacterObserver;
 
 		LevelLoader* m_pLoader;
+
+		bool m_Player2Spawned;
 	};
 }

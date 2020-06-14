@@ -10,7 +10,13 @@ namespace King
 	class Projectile : public GameObject
 	{
 	public:
-		Projectile(glm::vec3 direction);
+		enum Color
+		{
+			Green,
+			Blue
+		};
+
+		Projectile(glm::vec3 direction, Color color = Color::Green);
 		virtual ~Projectile() = default;
 
 		Projectile(const Projectile& other) = delete;
@@ -30,6 +36,8 @@ namespace King
 		SpriteRenderComponent* m_Sprite;
 		RigidbodyComponent* m_pRigidbody;
 		ColliderComponent* m_pCollider;
+
+		Color m_Color;
 
 		glm::vec3 m_Direction;
 		float m_Speed;
