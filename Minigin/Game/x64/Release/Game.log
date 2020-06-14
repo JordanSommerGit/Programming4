@@ -1,0 +1,32 @@
+﻿  Bob.cpp
+  Bounds.cpp
+  Bub.cpp
+  Character.cpp
+  Enemy.cpp
+  EnemyObserver.cpp
+  FrenchFries.cpp
+  Game.cpp
+  GameOverScene.cpp
+  Level1.cpp
+  Level2.cpp
+  Level3.cpp
+  LevelLoader.cpp
+  CharacterObserver.cpp
+  Main.cpp
+  Maita.cpp
+  Melon.cpp
+  PickUp.cpp
+  Platform.cpp
+  Projectile.cpp
+  Compiling...
+  Score.cpp
+  ScoreObserver.cpp
+  SplashScene.cpp
+  Zenchan.cpp
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+     Creating library D:\DAE\Git\Programming4\Minigin\x64\Release\Game.lib and object D:\DAE\Git\Programming4\Minigin\x64\Release\Game.exp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 1317 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Game.vcxproj -> D:\DAE\Git\Programming4\Minigin\x64\Release\Game.exe

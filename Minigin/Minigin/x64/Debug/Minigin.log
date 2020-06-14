@@ -1,10 +1,13 @@
 ﻿  MiniginPCH.cpp
   ColliderComponent.cpp
+  Command.cpp
   Component.cpp
+  EventSystem.cpp
   Font.cpp
   GameObject.cpp
   InputManager.cpp
   Minigin.cpp
+  Observer.cpp
   PhysicsManager.cpp
   RenderComponent.cpp
   Renderer.cpp
@@ -16,9 +19,22 @@
   SpriteRenderComponent.cpp
   TextObject.cpp
   TextRenderComponent.cpp
+  Generating Code...
+  Compiling...
   Texture2D.cpp
   Time.cpp
   Transform.cpp
   Generating Code...
-SDL2main.lib(SDL_windows_main.obj) : error LNK2019: unresolved external symbol SDL_main referenced in function main_utf8
-D:\DAE\Git\Programming4\Minigin\x64\Debug\Minigin.exe : fatal error LNK1120: 1 unresolved externals
+  Minigin.vcxproj -> D:\DAE\Git\Programming4\Minigin\x64\Debug\Minigin.lib
+  D:\DAE\Git\Programming4\Minigin\3rdParty\SDL2\lib\x64\SDL2.dll
+  1 File(s) copied
+  D:\DAE\Git\Programming4\Minigin\3rdParty\SDL2_image\lib\x64\libjpeg-9.dll
+  D:\DAE\Git\Programming4\Minigin\3rdParty\SDL2_image\lib\x64\libpng16-16.dll
+  D:\DAE\Git\Programming4\Minigin\3rdParty\SDL2_image\lib\x64\libtiff-5.dll
+  D:\DAE\Git\Programming4\Minigin\3rdParty\SDL2_image\lib\x64\libwebp-7.dll
+  D:\DAE\Git\Programming4\Minigin\3rdParty\SDL2_image\lib\x64\SDL2_image.dll
+  D:\DAE\Git\Programming4\Minigin\3rdParty\SDL2_image\lib\x64\zlib1.dll
+  6 File(s) copied
+  D:\DAE\Git\Programming4\Minigin\3rdParty\SDL2_ttf\lib\x64\libfreetype-6.dll
+  D:\DAE\Git\Programming4\Minigin\3rdParty\SDL2_ttf\lib\x64\SDL2_ttf.dll
+  2 File(s) copied

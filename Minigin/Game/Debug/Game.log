@@ -1,0 +1,29 @@
+﻿  Bob.cpp
+  Bounds.cpp
+  Bub.cpp
+  Character.cpp
+  Enemy.cpp
+  EnemyObserver.cpp
+  FrenchFries.cpp
+  Game.cpp
+  GameOverScene.cpp
+  Level1.cpp
+  Level2.cpp
+  Level3.cpp
+  LevelLoader.cpp
+  CharacterObserver.cpp
+  Main.cpp
+  Maita.cpp
+  Melon.cpp
+  PickUp.cpp
+  Platform.cpp
+  Projectile.cpp
+  Generating Code...
+  Compiling...
+  Score.cpp
+  ScoreObserver.cpp
+  SplashScene.cpp
+  Zenchan.cpp
+  Generating Code...
+     Creating library D:\DAE\Git\Programming4\Minigin\Debug\Game.lib and object D:\DAE\Git\Programming4\Minigin\Debug\Game.exp
+  Game.vcxproj -> D:\DAE\Git\Programming4\Minigin\Debug\Game.exe

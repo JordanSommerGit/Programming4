@@ -5,7 +5,7 @@ King::ScoreObserver::ScoreObserver()
 {
 }
 
-void King::ScoreObserver::OnNotify(GameObject* pSource, std::string event)
+void King::ScoreObserver::OnNotify(GameObject*, std::string event)
 {
 	for (size_t i = 0; i < m_Events->size(); i++)
 	{

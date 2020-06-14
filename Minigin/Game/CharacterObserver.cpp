@@ -7,7 +7,7 @@ King::CharacterObserver::CharacterObserver()
 {
 }
 
-void King::CharacterObserver::OnNotify(GameObject* pSource, std::string event)
+void King::CharacterObserver::OnNotify(GameObject*, std::string event)
 {
 	m_IsDead = false;
 	for (size_t i = 0; i < m_Events->size(); i++)
