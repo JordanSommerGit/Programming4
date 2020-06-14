@@ -1,5 +1,7 @@
-﻿  Level1.cpp
-  Level2.cpp
+﻿  Level2.cpp
   Level3.cpp
+  LevelLoader.cpp
+  Zenchan.cpp
   Generating Code...
+     Creating library D:\DAE\Git\Programming4\Minigin\Debug\Game.lib and object D:\DAE\Git\Programming4\Minigin\Debug\Game.exp
   Game.vcxproj -> D:\DAE\Git\Programming4\Minigin\Debug\Game.exe

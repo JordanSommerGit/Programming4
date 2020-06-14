@@ -13,6 +13,8 @@
 #include "Time.h"
 #include "Projectile.h"
 #include "Scene.h"
+#include "Enemy.h"
+#include "EventSystem.h"
 
 King::Character::Character()
 	: m_Sprite{ nullptr }
@@ -24,6 +26,8 @@ King::Character::Character()
 	, m_AttackAnimTime{ 0.3f }
 	, m_CurrentAttackCDTime{ 0.5f }
 	, m_AttackCDTime{ 0.5f }
+	, m_CurrentInvincibleTime{ 2.f }
+	, m_InvincibleTime{ 2.f }
 {
 }
 
@@ -34,6 +38,12 @@ void King::Character::Initialize()
 	m_Sprite = new SpriteRenderComponent();
 	m_Sprite->SetSprite("Character.png", 40, 40, 12, 8, 8, 0);
 	AddComponent(m_Sprite);
+
+	GameObject* pSubCollider = new GameObject();
+	m_pCollider = new ColliderComponent(34, 34);
+	pSubCollider->AddComponent(m_pCollider);
+	AddChild(pSubCollider);
+	pSubCollider->GetTransform()->SetPosition(3, 3, 0);
 
 	m_pCollider = new ColliderComponent(40, 40);
 	AddComponent(m_pCollider);
@@ -165,8 +175,29 @@ void King::Character::Update()
 	{
 		m_CurrentAttackCDTime += Time::GetInstance().GetElapsed();
 	}
+	if (m_CurrentInvincibleTime < m_InvincibleTime)
+	{
+		m_CurrentInvincibleTime += Time::GetInstance().GetElapsed();
+	}
 }
 
 void King::Character::Render() const
 {
+}
+
+
+void King::Character::OnTriggerStay(ColliderComponent* other)
+{
+	if (m_CurrentInvincibleTime >= m_InvincibleTime)
+	{
+		Enemy* pEnemy = dynamic_cast<Enemy*>(other->pGameObject);
+		if (pEnemy)
+		{
+			if (!pEnemy->IsBubbled())
+			{
+				m_CurrentInvincibleTime = 0.f;
+				EventSystem::GetInstance().Notify(this, "LIFE_LOST");
+			}
+		}
+	}
 }

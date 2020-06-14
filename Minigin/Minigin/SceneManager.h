@@ -11,7 +11,8 @@ namespace King
 	{
 	public:
 		Scene& CreateScene(const std::string& name);
-		void AddScene(std::shared_ptr<Scene> scene);
+		void AddScene(Scene* pScene);
+		void SetActiveScene(const std::string& name);
 
 		void Initialize();
 		void EarlyUpdate();
@@ -20,6 +21,8 @@ namespace King
 	private:
 		friend class Singleton<SceneManager>;
 		SceneManager() = default;
-		std::vector<std::shared_ptr<Scene>> m_Scenes;
+		~SceneManager();
+		std::vector<Scene*> m_Scenes;
+		Scene* m_pActiveScene;
 	};
 }

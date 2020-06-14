@@ -23,6 +23,11 @@ void King::Enemy::Bubble()
 	m_IsBubbled = true;
 }
 
+bool King::Enemy::IsBubbled() const
+{
+	return m_IsBubbled;
+}
+
 void King::Enemy::OnTriggerStay(ColliderComponent* other)
 {
 	if (m_IsBubbled)

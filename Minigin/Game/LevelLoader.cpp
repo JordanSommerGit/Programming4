@@ -90,6 +90,11 @@ void King::LevelLoader::Initialize()
 	}
 }
 
+King::Character* King::LevelLoader::GetCharacter() const
+{
+	return m_pCharacter;
+}
+
 void King::LevelLoader::AddLevel(std::string filename)
 {
 	auto mapGo = new GameObject();
@@ -102,6 +107,7 @@ void King::LevelLoader::AddLevel(std::string filename)
 void King::LevelLoader::AddCharacter(float posX, float posY)
 {
 	auto character = new Character();
+	m_pCharacter = character;
 	character->SetPosition(posX, posY);
 	GetScene()->Add(character);
 }

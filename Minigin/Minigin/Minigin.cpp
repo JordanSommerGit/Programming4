@@ -20,7 +20,7 @@ void King::Minigin::Initialize()
 		SDL_WINDOWPOS_UNDEFINED,
 		SDL_WINDOWPOS_UNDEFINED,
 		512,
-		424,
+		456,
 		SDL_WINDOW_OPENGL
 	);
 	if (m_Window == nullptr) 

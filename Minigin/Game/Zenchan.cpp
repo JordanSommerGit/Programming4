@@ -14,6 +14,7 @@
 #include "Melon.h"
 #include "Scene.h"
 #include "Transform.h"
+#include "EventSystem.h"
 
 King::Zenchan::Zenchan()
 {
@@ -37,6 +38,8 @@ void King::Zenchan::Initialize()
 	m_pRigidbody = new RigidbodyComponent(RigidbodyComponent::PhysicState::Dynamic);
 	//m_pRigidbody->SetApplyDrag(false);
 	AddComponent(m_pRigidbody);
+
+	EventSystem::GetInstance().Notify(this, "ENEMY_SPAWNED");
 }
 
 void King::Zenchan::Update()
@@ -68,6 +71,8 @@ void King::Zenchan::Update()
 				GetScene()->Add(pMelon);
 				pMelon->GetTransform()->SetPosition(GetTransform()->GetPosition());
 				Destroy();
+				EventSystem::GetInstance().Notify(this, "SCORE_1000");
+				EventSystem::GetInstance().Notify(this, "ENEMY_KILLED");
 			}
 		}
 		else

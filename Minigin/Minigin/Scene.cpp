@@ -124,3 +124,8 @@ void King::Scene::CleanUp()
 	}
 }
 
+std::string King::Scene::GetName() const
+{
+	return m_Name;
+}
+

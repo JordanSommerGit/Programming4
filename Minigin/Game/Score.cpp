@@ -25,7 +25,7 @@ King::Score::Score(int value)
 void King::Score::Initialize()
 {
 	m_Sprite = new SpriteRenderComponent();
-	m_Sprite->SetSprite("Scores.png", 50, 50, 4, 8, 1);
+	m_Sprite->SetSprite("Scores.png", 50, 50, 4, 8, 2);
 	AddComponent(m_Sprite);
 
 	m_pCollider = new ColliderComponent(50, 50);

@@ -1,7 +1,10 @@
 #pragma once
-class Game
-{
-public:
-	Game();
-};
 
+namespace King
+{
+	class Game
+	{
+	public:
+		Game();
+	};
+}

@@ -1,4 +1,9 @@
-﻿  GameObject.cpp
+﻿  ColliderComponent.cpp
+  GameObject.cpp
+  RigidbodyComponent.cpp
+  Scene.cpp
+  SceneManager.cpp
+  Generating Code...
   Minigin.vcxproj -> D:\DAE\Git\Programming4\Minigin\Win32\Debug\Minigin.lib
   D:\DAE\Git\Programming4\Minigin\3rdParty\SDL2\lib\x86\SDL2.dll
   1 File(s) copied

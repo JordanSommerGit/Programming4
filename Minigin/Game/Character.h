@@ -22,6 +22,8 @@ namespace King
 		void EarlyUpdate() override;
 		void Update() override;
 		void Render() const override;
+
+		void OnTriggerStay(ColliderComponent* other) override;
 	private:
 		SpriteRenderComponent* m_Sprite;
 		RigidbodyComponent* m_pRigidbody;
@@ -42,5 +44,8 @@ namespace King
 
 		float m_CurrentAttackCDTime;
 		float m_AttackCDTime;
+
+		float m_CurrentInvincibleTime;
+		float m_InvincibleTime;
 	};
 }

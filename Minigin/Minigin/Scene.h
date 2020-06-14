@@ -24,6 +24,7 @@ namespace King
 		void RootRender();
 
 		void CleanUp();
+		std::string GetName() const;
 
 		explicit Scene(const std::string& name);
 		virtual ~Scene();
@@ -36,10 +37,11 @@ namespace King
 	private: 
 
 		std::string m_Name;
-		std::vector<SceneObject*> m_Objects{};
 		PhysicsManager* m_pPhysicsManager;
 
 		static unsigned int m_IdCounter; 
+	protected:
+		std::vector<SceneObject*> m_Objects{};
 	};
 
 }

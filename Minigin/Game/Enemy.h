@@ -21,6 +21,7 @@ namespace King
 		void OnTriggerStay(ColliderComponent* other);
 
 		void Bubble();
+		bool IsBubbled() const;
 	protected:
 		SpriteRenderComponent* m_Sprite;
 		RigidbodyComponent* m_pRigidbody;

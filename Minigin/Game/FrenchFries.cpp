@@ -15,6 +15,7 @@
 #include "Transform.h"
 #include "Scene.h"
 #include "Score.h"
+#include "EventSystem.h"
 
 void King::FrenchFries::Initialize()
 {
@@ -50,4 +51,5 @@ void King::FrenchFries::OnCollect()
 	Score* pScore = new Score(500);
 	GetScene()->Add(pScore);
 	pScore->GetTransform()->SetPosition(GetTransform()->GetPosition());
+	EventSystem::GetInstance().Notify(this, "SCORE_500");
 }

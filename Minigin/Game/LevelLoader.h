@@ -4,6 +4,7 @@
 
 namespace King
 {
+	class Character;
 	class LevelLoader : public GameObject
 	{
 	public:
@@ -16,6 +17,8 @@ namespace King
 		LevelLoader& operator=(LevelLoader&& other) = delete;
 
 		void Initialize() override;
+
+		Character* GetCharacter() const;
 	private:
 		void AddLevel(std::string filename);
 		void AddCharacter(float posX, float posY);
@@ -25,5 +28,7 @@ namespace King
 		void AddMaita(float posX, float posY);
 
 		std::string m_Filename;
+
+		Character* m_pCharacter;
 	};
 }

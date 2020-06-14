@@ -15,6 +15,7 @@
 #include "Transform.h"
 #include "Scene.h"
 #include "Score.h"
+#include "EventSystem.h"
 
 void King::Melon::Initialize()
 {
@@ -49,4 +50,5 @@ void King::Melon::OnCollect()
 	Score* pScore = new Score(100);
 	GetScene()->Add(pScore);
 	pScore->GetTransform()->SetPosition(GetTransform()->GetPosition());
+	EventSystem::GetInstance().Notify(this, "SCORE_100");
 }

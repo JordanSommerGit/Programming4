@@ -12,56 +12,53 @@ void King::SceneManager::Initialize()
 
 void King::SceneManager::EarlyUpdate()
 {
-	for (auto& scene : m_Scenes)
-	{
-		scene->EarlyUpdate();
-	}
-
-	for (auto& scene : m_Scenes)
-	{
-		scene->RootEarlyUpdate();
-	}
+	m_pActiveScene->EarlyUpdate();
+	m_pActiveScene->RootEarlyUpdate();
 }
 
 void King::SceneManager::Update()
 {
-	for (auto& scene : m_Scenes)
-	{
-		scene->RootInitialize();
-	}
-
-	for (auto& scene : m_Scenes)
-	{
-		scene->Update();
-	}
-
-	for (auto& scene : m_Scenes)
-	{
-		scene->RootUpdate();
-	}
+	m_pActiveScene->RootInitialize();
+	m_pActiveScene->Update();
+	m_pActiveScene->RootUpdate();
 }
 
 void King::SceneManager::Render()
 {
-	for (const auto& scene : m_Scenes)
-	{
-		scene->Render();
-	}
+	m_pActiveScene->Render();
+	m_pActiveScene->RootRender();
+}
 
-	for (const auto& scene : m_Scenes)
+King::SceneManager::~SceneManager()
+{
+	for (Scene* pScene : m_Scenes)
 	{
-		scene->RootRender();
+		delete pScene;
+		pScene = nullptr;
 	}
 }
 
 King::Scene& King::SceneManager::CreateScene(const std::string& name)
 {
-	const auto scene = std::shared_ptr<Scene>(new Scene(name));
+	auto scene = new Scene(name);
 	m_Scenes.push_back(scene);
+	m_pActiveScene = scene;
 	return *scene;
 }
 
-void King::SceneManager::AddScene(std::shared_ptr<Scene> scene)
+void King::SceneManager::AddScene(Scene* pScene)
 {
-	m_Scenes.push_back(scene);
+	m_Scenes.push_back(pScene);
+	m_pActiveScene = pScene;
+}
+
+void King::SceneManager::SetActiveScene(const std::string& name)
+{
+	for (size_t i = 0; i < m_Scenes.size(); i++)
+	{
+		if (m_Scenes[i]->GetName() == name)
+		{
+			m_pActiveScene = m_Scenes[i];
+		}
+	}
 }

@@ -14,6 +14,7 @@
 #include "FrenchFries.h"
 #include "Scene.h"
 #include "Transform.h"
+#include "EventSystem.h"
 
 King::Maita::Maita()
 {
@@ -37,6 +38,8 @@ void King::Maita::Initialize()
 	m_pRigidbody = new RigidbodyComponent(RigidbodyComponent::PhysicState::Dynamic);
 	//m_pRigidbody->SetApplyDrag(false);
 	AddComponent(m_pRigidbody);
+
+	EventSystem::GetInstance().Notify(this, "ENEMY_SPAWNED");
 }
 
 void King::Maita::Update()
@@ -67,6 +70,8 @@ void King::Maita::Update()
 				FrenchFries* pFrenchFries = new FrenchFries();
 				GetScene()->Add(pFrenchFries);
 				pFrenchFries->GetTransform()->SetPosition(GetTransform()->GetPosition());
+				EventSystem::GetInstance().Notify(this, "SCORE_1000");
+				EventSystem::GetInstance().Notify(this, "ENEMY_KILLED");
 				Destroy();
 			}
 		}
